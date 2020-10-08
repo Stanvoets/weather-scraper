@@ -18,7 +18,7 @@ class WeatherScraper
         try {
             $response = $client->request(
                 'GET',
-                'https://api.openweathermap.org/data/2.5/weather?q=London&appid=40b38330c87e48d70d4dd69cd6e5a645'
+                'https://api.openweathermap.org/data/2.5/weather?q=London&appid=API_TOKEN'
             );
         } catch (GuzzleException $e) {
             exit($e);
@@ -56,9 +56,9 @@ class WeatherScraper
                 $weatherTable = new Weather;
 
                 $weatherTable->data = $resp;
-
                 $weatherTable->rating = $rating;
                 $weatherTable->category = $category;
+
                 $weatherTable->save();
 //                dd($resp);
             }

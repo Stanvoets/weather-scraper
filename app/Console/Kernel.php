@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\WeatherScraper;
@@ -27,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             WeatherScraper::getData();
-        })->everyMinute();
+        })->hourly();
     }
 
     /**
